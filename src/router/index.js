@@ -9,7 +9,7 @@ export default createRouter({
       children: [
         {
           path: '/',
-          component: () => import('@/views/Home.vue'),
+          component: () => import('@/views/HomePage.vue'),
         },
       ],
     },
