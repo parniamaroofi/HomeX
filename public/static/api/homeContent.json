@@ -1,0 +1,71 @@
+{
+    "recomended": [
+        {
+          "id": "6f2c1afe-205c-46f8-bdbd-97212a29ae6f",
+          "imageUrl":
+            "https://static.vecteezy.com/system/resources/previews/023/308/053/non_2x/ai-generative-exterior-of-modern-luxury-house-with-garden-and-beautiful-sky-free-photo.jpg",
+          "title": "Premium modern house 1",
+          "location": "Duo Tower, Penn Street, London",
+          "per": "month",
+          "price": 850,
+          "bed": 4,
+          "bath": 2,
+          "parking": 1,
+          "saved": false
+        },
+        {
+          "id": "cb5f8fdc-88ba-4fdf-a673-839d185df649",
+          "imageUrl":
+            "https://cdn.houseplansservices.com/content/driar5vsn9j6vdvam33js5o8bo/w991x660.jpg?v=2",
+          "title": "Premium modern house 2",
+          "location": "Duo Tower, Penn Street, London",
+          "per": "month",
+          "price": 1020,
+          "bed": 5,
+          "bath": 3,
+          "parking": 3,
+          "saved": false
+        },
+        {
+          "id": "4bed0a6b-a171-48f3-bfe7-86643ae5f59e",
+          "imageUrl": "https://photos.zillowstatic.com/fp/da982f8d7dcdd0f81daa8a9d76e672c9-p_e.jpg",
+          "title": "Premium modern house 3",
+          "location": "Duo Tower, Penn Street, London",
+          "per": "month",
+          "price": 600,
+          "bed": 1,
+          "bath": 1,
+          "parking": 1,
+          "saved": false
+        }
+      ],
+
+      "theLatest":[
+         {
+          "id": "87c39fc6-e7b0-46c4-bfa6-7eba982015b1",
+          "imageUrl":
+            "https://static.vecteezy.com/system/resources/previews/023/307/718/large_2x/ai-generative-exterior-of-modern-luxury-house-with-garden-and-beautiful-sky-free-photo.jpg",
+          "title": "Luxury modern house",
+          "location": "Duo Tower, Penn Street, London",
+          "per": "month",
+          "price": 1000,
+          "bed": 2,
+          "bath": 2,
+          "parking": 1,
+          "saved": false
+        },
+        {
+          "id": "87c39fc6-e7b0-46c4-bfa6-7eba982015b1",
+          "imageUrl":
+            "https://static.vecteezy.com/system/resources/previews/023/308/053/non_2x/ai-generative-exterior-of-modern-luxury-house-with-garden-and-beautiful-sky-free-photo.jpg",
+          "title": "Premium modern house 1",
+          "location": "Duo Tower, Penn Street, London",
+          "per": "month",
+          "price": 850,
+          "bed": 4,
+          "bath": 2,
+          "parking": 1,
+          "saved": false
+        }
+      ]
+}

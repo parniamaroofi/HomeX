@@ -3,9 +3,9 @@
     <!-- Slider header -->
     <div class="d-flex justify-space-between align-center px-5">
       <!-- Slider title -->
-      <b class="text-lg">Recomended</b>
+      <b class="text-lg">{{ title }}</b>
 
-      <span class="text-primary text-[16px]">See more</span>
+      <span class="text-primary text-[15px]">See more</span>
     </div>
 
     <!-- Slider items -->
@@ -36,7 +36,7 @@
           <p class="text-[18px] mb-1">{{ item.title }}</p>
 
           <!-- item location -->
-          <p class="translate-x-[-4px] text-grey mb-1">
+          <p class="translate-x-[-4px] text-grey text-[15px] mb-1">
             <v-icon
               size="small"
               icon="svg:location"
@@ -76,46 +76,10 @@
 export default {
   name: 'Slider',
 
+  props: ['title', 'items'],
+
   data() {
-    return {
-      items: [
-        {
-          imageUrl:
-            'https://static.vecteezy.com/system/resources/previews/023/308/053/non_2x/ai-generative-exterior-of-modern-luxury-house-with-garden-and-beautiful-sky-free-photo.jpg',
-          title: 'Premium modern house 1',
-          location: 'Duo Tower, Penn Street, London',
-          per: 'month',
-          price: 850,
-          bed: 4,
-          bath: 2,
-          parking: 1,
-          saved: false,
-        },
-        {
-          imageUrl:
-            'https://cdn.houseplansservices.com/content/driar5vsn9j6vdvam33js5o8bo/w991x660.jpg?v=2',
-          title: 'Premium modern house 2',
-          location: 'Duo Tower, Penn Street, London',
-          per: 'month',
-          price: 1020,
-          bed: 5,
-          bath: 3,
-          parking: 3,
-          saved: false,
-        },
-        {
-          imageUrl: 'https://photos.zillowstatic.com/fp/da982f8d7dcdd0f81daa8a9d76e672c9-p_e.jpg',
-          title: 'Premium modern house 3',
-          location: 'Duo Tower, Penn Street, London',
-          per: 'month',
-          price: 600,
-          bed: 1,
-          bath: 1,
-          parking: 1,
-          saved: false,
-        },
-      ],
-    };
+    return {};
   },
 
   mounted() {},

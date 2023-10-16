@@ -62,8 +62,12 @@
         </div>
       </div>
       <!-- Recomended slider -->
-      <div>
-        <Slider />
+      <div class="mb-4">
+        <Slider :title="'Recomended'" :items="homeData.recomended" />
+      </div>
+      <!-- The latest slider -->
+      <div class="mb-4">
+        <Slider :title="'The latest'" :items="homeData.theLatest" />
       </div>
     </div>
   </div>
@@ -81,11 +85,31 @@ export default {
   },
 
   data() {
-    return {};
+    return {
+      homeData: {},
+    };
   },
 
-  mounted() {},
+  mounted() {
+    this.getData();
+  },
 
-  methods: {},
+  methods: {
+    getData() {
+      this.$http
+        .get('/static/api/homeContent.json', {
+          headers: {
+            Authorization: 'Bearer: ' + localStorage.getItem('token'),
+          },
+        })
+
+        .then((res) => {
+          this.homeData = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
 };
 </script>

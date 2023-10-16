@@ -40,5 +40,10 @@ const vuetify = createVuetify({
 });
 
 const app = createApp(App);
+
+// to use axios globally
+import Axios from 'axios';
+app.config.globalProperties.$http = Axios;
+
 app.use(vuetify);
 app.use(router).mount('#app');
