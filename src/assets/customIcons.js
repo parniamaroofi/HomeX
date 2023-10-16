@@ -5,6 +5,7 @@ import bell from '@/components/icons/Bell.vue';
 import bath from '@/components/icons/Bath.vue';
 import parking from '@/components/icons/Parking.vue';
 import location from '@/components/icons/Location.vue';
+import bookmark from '@/components/icons/Bookmark.vue';
 
 const iconsComponent = {
   bed,
@@ -13,6 +14,7 @@ const iconsComponent = {
   bath,
   parking,
   location,
+  bookmark,
 };
 
 const customIcons = {

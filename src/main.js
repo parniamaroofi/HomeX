@@ -16,7 +16,7 @@ import { customIcons } from '@/assets/customIcons.js';
 const lightTheme = {
   dark: false,
   colors: {
-    primary: '#436cf4',
+    primary: '#5378f7',
   },
 };
 

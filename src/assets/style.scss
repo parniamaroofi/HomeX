@@ -1,7 +1,7 @@
 :root {
   // Border radius
   --sm-radius: 10px;
-  --md-radius: 16px;
+  --md-radius: 15px;
   --lg-radius: 20px;
 
   // Colors
@@ -17,8 +17,19 @@ body {
   letter-spacing: 0;
 }
 
+svg {
+  height: fit-content;
+}
+
 .v-btn {
   font-weight: 400 !important;
   box-shadow: none !important;
   text-transform: none !important;
+}
+
+.primary-icon {
+  path,
+  circle {
+    stroke: #5378f7;
+  }
 }

@@ -40,7 +40,7 @@
           </div>
 
           <div>
-            <v-btn color="primary" block rounded height="48" class="mt-1">Find House</v-btn>
+            <v-btn color="primary" block rounded height="46" class="mt-1">Find House</v-btn>
           </div>
         </div>
       </v-window-item>

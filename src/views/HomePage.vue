@@ -3,7 +3,7 @@
     <!-- Page Header -->
     <div class="w-full h-[180px] bg-[#1b1b1b]">
       <!-- Header content -->
-      <div class="px-4 py-6">
+      <div class="px-5 py-6">
         <v-row>
           <!-- Account image -->
           <v-col cols="4">
@@ -36,15 +36,15 @@
 
     <!-- Main Content -->
     <div class="w-full mt-[-102px]">
-      <div class="pa-4">
+      <div class="pa-5">
         <!-- Saerch Card -->
-        <v-card flat class="rounded-[--md-radius]">
+        <v-card flat class="rounded-[--lg-radius]">
           <QuickSearch />
         </v-card>
 
         <!-- Special offer box -->
         <div
-          class="bg-[#e6edfb] rounded-[--md-radius] d-flex justify-space-between align-center pa-4 mt-4"
+          class="bg-[#e6edfb] rounded-[--lg-radius] d-flex justify-space-between align-center pa-4 mt-4"
         >
           <div>
             <b class="text-primary">Get special offer now!</b>
@@ -61,17 +61,23 @@
           </div>
         </div>
       </div>
+      <!-- Recomended slider -->
+      <div>
+        <Slider />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import QuickSearch from '@/components/QuickSearch.vue';
+import Slider from '@/components/Slider.vue';
 export default {
   name: 'Home',
 
   components: {
     QuickSearch,
+    Slider,
   },
 
   data() {
