@@ -45,7 +45,7 @@ export default {
   .v-field {
     box-shadow: none;
     border-radius: 10px;
-    background-color: #f5f5f5;
+    background-color: var(--lighten-gray);
   }
 }
 </style>

@@ -12,9 +12,20 @@ import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
 import { customIcons } from '@/assets/customIcons.js';
 
+// Custom theme properties
+const lightTheme = {
+  dark: false,
+  colors: {
+    primary: '#436cf4',
+  },
+};
+
 const vuetify = createVuetify({
   theme: {
-    defaultTheme: 'light',
+    defaultTheme: 'lightTheme',
+    themes: {
+      lightTheme,
+    },
   },
   icons: {
     defaultSet: 'mdi',

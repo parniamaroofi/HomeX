@@ -40,7 +40,7 @@
           </div>
 
           <div>
-            <v-btn color="info" block rounded height="48" class="mt-1">Find House</v-btn>
+            <v-btn color="primary" block rounded height="48" class="mt-1">Find House</v-btn>
           </div>
         </div>
       </v-window-item>
@@ -90,8 +90,8 @@ export default {
     .v-btn {
       width: 31%;
       height: 46px;
-      border-radius: 10px;
-      background-color: #f5f5f5 !important;
+      border-radius: var(--sm-radius);
+      background-color: var(--lighten-gray) !important;
     }
   }
 }

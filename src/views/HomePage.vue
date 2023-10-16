@@ -35,11 +35,31 @@
     </div>
 
     <!-- Main Content -->
-    <div class="w-full mt-[-100px]">
+    <div class="w-full mt-[-102px]">
       <div class="pa-4">
-        <v-card flat class="rounded-[15px]">
+        <!-- Saerch Card -->
+        <v-card flat class="rounded-[--md-radius]">
           <QuickSearch />
         </v-card>
+
+        <!-- Special offer box -->
+        <div
+          class="bg-[#e6edfb] rounded-[--md-radius] d-flex justify-space-between align-center pa-4 mt-4"
+        >
+          <div>
+            <b class="text-primary">Get special offer now!</b>
+            <p class="mb-0 text-grey text-sm">Verify your account to get Special offer</p>
+          </div>
+
+          <div>
+            <v-btn
+              color="primary"
+              variant="tonal"
+              class="rounded-[16px]"
+              icon="mdi-arrow-right"
+            ></v-btn>
+          </div>
+        </div>
       </div>
     </div>
   </div>
