@@ -34,7 +34,7 @@ export default {
 
   methods: {
     updateValue(event) {
-      this.$emit('input', event);
+      this.$emit('update:modelValue', event.target.value);
     },
   },
 };
@@ -46,6 +46,10 @@ export default {
     box-shadow: none;
     border-radius: 10px;
     background-color: var(--lighten-gray);
+
+    ::placeholder {
+      font-size: 0.9rem;
+    }
   }
 }
 </style>

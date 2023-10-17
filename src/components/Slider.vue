@@ -3,7 +3,7 @@
     <!-- Slider header -->
     <div class="d-flex justify-space-between align-center px-5">
       <!-- Slider title -->
-      <b class="text-lg">{{ title }}</b>
+      <b class="text-[19px]">{{ title }}</b>
 
       <span class="text-primary text-[15px]">See more</span>
     </div>
@@ -33,10 +33,10 @@
         <!-- item details -->
         <div class="mt-2 px-1">
           <!-- item title -->
-          <p class="text-[18px] mb-1">{{ item.title }}</p>
+          <p class="text-[17px] mb-1">{{ item.title }}</p>
 
           <!-- item location -->
-          <p class="translate-x-[-4px] text-grey text-[15px] mb-1">
+          <p class="translate-x-[-4px] text-grey text-[14px] mb-1">
             <v-icon
               size="small"
               icon="svg:location"

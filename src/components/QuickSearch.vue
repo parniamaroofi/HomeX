@@ -1,157 +1,147 @@
 <template>
   <div class="quick_search">
-    <!-- Tab items -->
-    <v-tabs v-model="tab" fixed-tabs>
-      <v-tab>Buy</v-tab>
-      <v-tab>Rent</v-tab>
-      <v-tab>Sold</v-tab>
-    </v-tabs>
+    <!-- Location serach field -->
+    <TextField
+      :density="'comfortable'"
+      :hideDetails="true"
+      :prependInnerIcon="'svg:location'"
+      :placeholder="'Search location, street...'"
+      v-model="search.field"
+    />
 
-    <!-- Tab windows -->
-    <v-window v-model="tab">
-      <!-- "Buy" tab window -->
-      <v-window-item>
-        <div class="pa-4">
-          <!-- Location serach field -->
-          <TextField
-            :density="'comfortable'"
-            :hideDetails="true"
-            :prependInnerIcon="'svg:location'"
-            :placeholder="'Search location, street...'"
-            v-model="locationSearch"
-          />
+    <!-- House Options -->
+    <div class="options_box d-flex justify-space-between py-4">
+      <!-- -------------------------- Bed ----------------------------- -->
+      <v-menu>
+        <template v-slot:activator="{ props }">
+          <v-btn v-bind="props">
+            <v-icon icon="svg:bed" size="x-large" class="mr-1"></v-icon>
+            <span :class="search.bedsNum > 0 ? 'font-bold text-xs' : 'text-grey'">
+              <span>{{ search.bedsNum }}</span>
+              <span>{{ search.bedsNum > 1 ? ' Beds' : ' Bed' }}</span>
+            </span>
+          </v-btn>
+        </template>
+        <v-list density="compact">
+          <v-list-item
+            v-for="(num, index) in 6"
+            :key="index"
+            :class="search.bedsNum == num ? 'bg-[#e6edfb]' : ''"
+          >
+            <v-list-item-title @click="search.bedsNum = num" class="text-sm">
+              {{ num + (num > 1 ? ' Beds' : ' Bed') }}
+            </v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+      <!-- -------------------------- Bath ----------------------------- -->
+      <v-menu>
+        <template v-slot:activator="{ props }">
+          <v-btn v-bind="props">
+            <v-icon icon="svg:bath" size="x-large" class="mr-1"></v-icon>
+            <span :class="search.bathNum > 0 ? 'font-bold text-xs' : 'text-grey'">
+              <span>{{ search.bathNum }}</span>
+              <span> Bath</span>
+            </span>
+          </v-btn>
+        </template>
+        <v-list density="compact">
+          <v-list-item
+            v-for="(num, index) in 4"
+            :key="index"
+            :class="search.bathNum == num ? 'bg-[#e6edfb]' : ''"
+          >
+            <v-list-item-title @click="search.bathNum = num" class="text-sm">
+              {{ num + ' Bath' }}
+            </v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+      <!-- ---------------------------- Parking --------------------------- -->
+      <v-menu>
+        <template v-slot:activator="{ props }">
+          <v-btn v-bind="props">
+            <v-icon icon="svg:parking" size="x-large" class="mr-1"></v-icon>
+            <span :class="search.parkingsNum > 0 ? 'font-bold text-xs' : 'text-grey'">
+              <span>{{ search.parkingsNum }}</span>
+              <span>
+                {{ search.parkingsNum > 1 ? ' Parkings' : ' Parking' }}
+              </span>
+            </span>
+          </v-btn>
+        </template>
+        <v-list density="compact">
+          <v-list-item
+            v-for="(num, index) in 3"
+            :key="index"
+            :class="search.parkingsNum == num ? 'bg-[#e6edfb]' : ''"
+          >
+            <v-list-item-title @click="search.parkingsNum = num" class="text-sm">
+              {{ num + (num > 1 ? ' Parkings' : ' Parking') }}
+            </v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+    </div>
 
-          <!-- House Options -->
-          <div class="options_box d-flex justify-space-between py-4">
-            <v-btn>
-              <v-icon icon="svg:bed" size="x-large" class="mr-2"></v-icon>
-              <span class="text-grey">Bed</span>
-            </v-btn>
-            <!-- ------------------------------------------------------- -->
-            <v-btn
-              ><v-icon icon="svg:bath" size="x-large" class="mr-2"></v-icon>
-              <span class="text-grey">Bath</span></v-btn
-            >
-            <!-- ------------------------------------------------------- -->
-            <v-btn
-              ><v-icon icon="svg:parking" size="x-large" class="mr-2"></v-icon>
-              <span class="text-grey">Parking</span></v-btn
-            >
-          </div>
+    <div
+      v-if="type == 'rent'"
+      class="border border-gray-500 rounded-lg d-flex align-center pr-3 pl-4 py-1 mb-4"
+    >
+      <!-- lable icon -->
+      <div class="mr-4">
+        <v-icon icon="svg:label" class="scale-[1.9] rotate-[10deg]"></v-icon>
+      </div>
 
-          <div>
-            <v-btn color="primary" block rounded height="46" class="mt-1">Find House</v-btn>
-          </div>
-        </div>
-      </v-window-item>
+      <div class="text-sm text-grey-darken-1">only show listings with deals or promotions</div>
 
-      <!-- "Rent" tab window -->
-      <v-window-item>
-        <div class="pa-4">
-          <!-- Location serach field -->
-          <TextField
-            :density="'comfortable'"
-            :hideDetails="true"
-            :prependInnerIcon="'svg:location'"
-            :placeholder="'Search location, street...'"
-            v-model="locationSearch"
-          />
+      <div><v-checkbox v-model="search.hasDeal" hide-details color="primary"></v-checkbox></div>
+    </div>
 
-          <!-- House Options -->
-          <div class="options_box d-flex justify-space-between py-4">
-            <v-btn>
-              <v-icon icon="svg:bed" size="x-large" class="mr-2"></v-icon>
-              <span class="text-grey">Bed</span>
-            </v-btn>
-            <!-- ------------------------------------------------------- -->
-            <v-btn
-              ><v-icon icon="svg:bath" size="x-large" class="mr-2"></v-icon>
-              <span class="text-grey">Bath</span></v-btn
-            >
-            <!-- ------------------------------------------------------- -->
-            <v-btn
-              ><v-icon icon="svg:parking" size="x-large" class="mr-2"></v-icon>
-              <span class="text-grey">Parking</span></v-btn
-            >
-          </div>
-
-          <div>
-            <v-btn color="primary" block rounded height="46" class="mt-1">Find House</v-btn>
-          </div>
-        </div>
-      </v-window-item>
-
-      <!-- "Sold" tab window -->
-      <v-window-item>
-        <div class="pa-4">
-          <!-- Location serach field -->
-          <TextField
-            :density="'comfortable'"
-            :hideDetails="true"
-            :prependInnerIcon="'svg:location'"
-            :placeholder="'Search location, street...'"
-            v-model="locationSearch"
-          />
-
-          <!-- House Options -->
-          <div class="options_box d-flex justify-space-between py-4">
-            <v-btn>
-              <v-icon icon="svg:bed" size="x-large" class="mr-2"></v-icon>
-              <span class="text-grey">Bed</span>
-            </v-btn>
-            <!-- ------------------------------------------------------- -->
-            <v-btn
-              ><v-icon icon="svg:bath" size="x-large" class="mr-2"></v-icon>
-              <span class="text-grey">Bath</span></v-btn
-            >
-            <!-- ------------------------------------------------------- -->
-            <v-btn
-              ><v-icon icon="svg:parking" size="x-large" class="mr-2"></v-icon>
-              <span class="text-grey">Parking</span></v-btn
-            >
-          </div>
-
-          <div>
-            <v-btn color="primary" block rounded height="46" class="mt-1">Find House</v-btn>
-          </div>
-        </div>
-      </v-window-item>
-    </v-window>
+    <div>
+      <v-btn color="primary" block rounded height="46" class="mt-1">Find House</v-btn>
+    </div>
   </div>
 </template>
 
 <script>
+import { reactive } from 'vue';
 import TextField from '@/components/microComponents/TextField.vue';
 export default {
   name: 'QuickSearch',
+
+  props: ['type'],
 
   components: {
     TextField,
   },
 
-  data() {
+  setup() {
+    const search = reactive({
+      field: '',
+      bedsNum: null,
+      bathNum: null,
+      parkingsNum: null,
+      hasDeal: false,
+    });
+
     return {
-      tab: null,
-      locationSearch: '',
+      search,
     };
   },
 
   mounted() {},
 
-  methods: {},
+  methods: {
+    test(num) {
+      console.log(num);
+    },
+  },
 };
 </script>
 
 <style lang="scss">
 .quick_search {
-  // tab style
-  .v-slide-group__content {
-    border-bottom: 3px solid #ebebeb;
-    .v-btn--active > .v-btn__overlay {
-      opacity: 0; // Remove "Active mode overlay"
-    }
-  }
-
   .options_box {
     .v-btn {
       width: 31%;

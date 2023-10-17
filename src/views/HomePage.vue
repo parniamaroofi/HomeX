@@ -36,10 +36,40 @@
 
     <!-- Main Content -->
     <div class="w-full mt-[-102px]">
-      <div class="pa-5">
+      <div class="pa-4">
         <!-- Saerch Card -->
         <v-card flat class="rounded-[--lg-radius]">
-          <QuickSearch />
+          <!-- Tab items -->
+          <v-tabs v-model="tab" fixed-tabs>
+            <v-tab>Buy</v-tab>
+            <v-tab>Rent</v-tab>
+            <v-tab>Sold</v-tab>
+          </v-tabs>
+
+          <!-- Tab windows -->
+          <v-window v-model="tab">
+            {{ search }}
+            <!-- "Buy" tab window -->
+            <v-window-item>
+              <div class="pa-4">
+                <QuickSearch :type="'buy'" />
+              </div>
+            </v-window-item>
+
+            <!-- "Rent" tab window -->
+            <v-window-item>
+              <div class="pa-4">
+                <QuickSearch :type="'rent'" />
+              </div>
+            </v-window-item>
+
+            <!-- "Sold" tab window -->
+            <v-window-item>
+              <div class="pa-4">
+                <QuickSearch :type="'sold'" />
+              </div>
+            </v-window-item>
+          </v-window>
         </v-card>
 
         <!-- Special offer box -->
@@ -74,20 +104,25 @@
 </template>
 
 <script>
+import { ref } from 'vue';
 import QuickSearch from '@/components/QuickSearch.vue';
 import Slider from '@/components/Slider.vue';
 export default {
   name: 'Home',
 
+  setup() {
+    const tab = ref(0);
+    const homeData = ref({});
+
+    return {
+      tab,
+      homeData,
+    };
+  },
+
   components: {
     QuickSearch,
     Slider,
-  },
-
-  data() {
-    return {
-      homeData: {},
-    };
   },
 
   mounted() {
@@ -113,3 +148,15 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.home_page {
+  // tab style
+  .v-slide-group__content {
+    border-bottom: 3px solid #ebebeb;
+    .v-btn--active > .v-btn__overlay {
+      opacity: 0; // Remove "Active mode overlay"
+    }
+  }
+}
+</style>
