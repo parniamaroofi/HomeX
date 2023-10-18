@@ -15,8 +15,8 @@
       <v-menu>
         <template v-slot:activator="{ props }">
           <v-btn v-bind="props">
-            <v-icon icon="svg:bed" size="x-large" class="mr-1"></v-icon>
-            <span :class="search.bedsNum > 0 ? 'font-bold text-xs' : 'text-grey'">
+            <v-icon icon="svg:bed" size="x-large" class="mr-1.5"></v-icon>
+            <span :class="search.bedsNum > 0 ? 'text-xs' : 'text-grey'">
               <span>{{ search.bedsNum }}</span>
               <span>{{ search.bedsNum > 1 ? ' Beds' : ' Bed' }}</span>
             </span>
@@ -26,9 +26,11 @@
           <v-list-item
             v-for="(num, index) in 6"
             :key="index"
-            :class="search.bedsNum == num ? 'bg-[#e6edfb]' : ''"
+            :class="search.bedsNum == num ? 'bg-[#eaeaea]' : ''"
+            @click="search.bedsNum = num"
+            class="cursor-pointer"
           >
-            <v-list-item-title @click="search.bedsNum = num" class="text-sm">
+            <v-list-item-title>
               {{ num + (num > 1 ? ' Beds' : ' Bed') }}
             </v-list-item-title>
           </v-list-item>
@@ -38,8 +40,8 @@
       <v-menu>
         <template v-slot:activator="{ props }">
           <v-btn v-bind="props">
-            <v-icon icon="svg:bath" size="x-large" class="mr-1"></v-icon>
-            <span :class="search.bathNum > 0 ? 'font-bold text-xs' : 'text-grey'">
+            <v-icon icon="svg:bath" size="x-large" class="mr-1.5"></v-icon>
+            <span :class="search.bathNum > 0 ? 'text-xs' : 'text-grey'">
               <span>{{ search.bathNum }}</span>
               <span> Bath</span>
             </span>
@@ -49,9 +51,11 @@
           <v-list-item
             v-for="(num, index) in 4"
             :key="index"
-            :class="search.bathNum == num ? 'bg-[#e6edfb]' : ''"
+            :class="search.bathNum == num ? 'bg-[#eaeaea]' : ''"
+            @click="search.bathNum = num"
+            class="cursor-pointer"
           >
-            <v-list-item-title @click="search.bathNum = num" class="text-sm">
+            <v-list-item-title>
               {{ num + ' Bath' }}
             </v-list-item-title>
           </v-list-item>
@@ -61,8 +65,8 @@
       <v-menu>
         <template v-slot:activator="{ props }">
           <v-btn v-bind="props">
-            <v-icon icon="svg:parking" size="x-large" class="mr-1"></v-icon>
-            <span :class="search.parkingsNum > 0 ? 'font-bold text-xs' : 'text-grey'">
+            <v-icon icon="svg:parking" size="x-large" class="mr-1.5"></v-icon>
+            <span :class="search.parkingsNum > 0 ? 'text-xs' : 'text-grey'">
               <span>{{ search.parkingsNum }}</span>
               <span>
                 {{ search.parkingsNum > 1 ? ' Parkings' : ' Parking' }}
@@ -74,9 +78,11 @@
           <v-list-item
             v-for="(num, index) in 3"
             :key="index"
-            :class="search.parkingsNum == num ? 'bg-[#e6edfb]' : ''"
+            :class="search.parkingsNum == num ? 'bg-[#eaeaea]' : ''"
+            @click="search.parkingsNum = num"
+            class="cursor-pointer"
           >
-            <v-list-item-title @click="search.parkingsNum = num" class="text-sm">
+            <v-list-item-title>
               {{ num + (num > 1 ? ' Parkings' : ' Parking') }}
             </v-list-item-title>
           </v-list-item>
@@ -84,6 +90,7 @@
       </v-menu>
     </div>
 
+    <!-- Extra option for Rent -->
     <div
       v-if="type == 'rent'"
       class="border border-gray-500 rounded-lg d-flex align-center pr-3 pl-4 py-1 mb-4"
@@ -98,6 +105,17 @@
       <div><v-checkbox v-model="search.hasDeal" hide-details color="primary"></v-checkbox></div>
     </div>
 
+    <!-- Extra option for Sold -->
+    <div v-if="type == 'sold'" class="mb-4">
+      <Select
+        :label="'Sold within'"
+        :density="'comfortable'"
+        :items="soldWithinOptions"
+        :hideDetails="true"
+        v-model="search.soldWithin"
+      />
+    </div>
+
     <div>
       <v-btn color="primary" block rounded height="46" class="mt-1">Find House</v-btn>
     </div>
@@ -106,6 +124,7 @@
 
 <script>
 import { reactive } from 'vue';
+import Select from '@/components/microComponents/Select.vue';
 import TextField from '@/components/microComponents/TextField.vue';
 export default {
   name: 'QuickSearch',
@@ -113,6 +132,7 @@ export default {
   props: ['type'],
 
   components: {
+    Select,
     TextField,
   },
 
@@ -123,10 +143,23 @@ export default {
       bathNum: null,
       parkingsNum: null,
       hasDeal: false,
+      soldWithin: 'Last 6 months',
     });
+
+    const soldWithinOptions = reactive([
+      'Last 7 days',
+      'Last 1 month',
+      'Last 3 months',
+      'Last 6 months',
+      'Last 1 year',
+      'Last 2 years',
+      'Last 3 years',
+      'last 5 years',
+    ]);
 
     return {
       search,
+      soldWithinOptions,
     };
   },
 

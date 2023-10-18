@@ -48,7 +48,6 @@
 
           <!-- Tab windows -->
           <v-window v-model="tab">
-            {{ search }}
             <!-- "Buy" tab window -->
             <v-window-item>
               <div class="pa-4">
