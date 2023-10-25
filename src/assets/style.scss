@@ -21,6 +21,11 @@ svg {
   height: fit-content;
 }
 
+input,
+.v-select__selection-text {
+  font-size: 0.92rem !important;
+}
+
 .v-btn {
   font-weight: 400 !important;
   box-shadow: none !important;

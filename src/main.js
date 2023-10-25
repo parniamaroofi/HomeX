@@ -3,7 +3,9 @@ import './assets/style.scss';
 import App from './App.vue';
 import router from './router/index.js';
 
-// Vuetify
+// ----------------------------------------------------------------------------------------
+// ------------------------------- Vuetify config strat -----------------------------------
+// ----------------------------------------------------------------------------------------
 import 'vuetify/styles';
 import '@mdi/font/css/materialdesignicons.css';
 import { aliases, mdi } from 'vuetify/lib/iconsets/mdi';
@@ -38,6 +40,9 @@ const vuetify = createVuetify({
   components,
   directives,
 });
+// ----------------------------------------------------------------------------------------
+// ------------------------------- Vuetify config end -------------------------------------
+// ----------------------------------------------------------------------------------------
 
 const app = createApp(App);
 

@@ -3,9 +3,9 @@
     <!-- Slider header -->
     <div class="d-flex justify-space-between align-center px-5">
       <!-- Slider title -->
-      <b class="text-[19px]">{{ title }}</b>
+      <b class="text-[1.2rem]">{{ title }}</b>
 
-      <span class="text-primary text-[15px]">See more</span>
+      <span class="text-primary text-[0.94rem]">See more</span>
     </div>
 
     <!-- Slider items -->
@@ -14,15 +14,16 @@
       <div
         v-for="(item, index) in items"
         :key="index"
-        class="slider_item w-[290px] min-w-[290px] relative mr-5"
+        class="slider_item w-[290px] min-w-[290px] relative mr-5 cursor-pointer"
         :class="index == 0 ? 'ml-5' : ''"
+        @click="$router.push(`/post/${item.id}`)"
       >
         <!-- item image -->
         <img class="rounded-[--lg-radius] h-[180px] w-full" :src="item.imageUrl" />
 
         <!-- item price and SAVE icon -->
         <div class="absolute top-3.5 left-0 px-3 d-flex w-full justify-space-between">
-          <div class="bg-white rounded-full text-[15px] d-flex align-center px-3">
+          <div class="bg-white rounded-full text-[0.94rem] d-flex align-center px-3">
             <b class="text-primary">${{ item.price }}</b>
             <span class="text-grey">/{{ item.per }}</span>
           </div>
@@ -33,10 +34,10 @@
         <!-- item details -->
         <div class="mt-2 px-1">
           <!-- item title -->
-          <p class="text-[17px] mb-1">{{ item.title }}</p>
+          <p class="text-[1.05rem] mb-1">{{ item.title }}</p>
 
           <!-- item location -->
-          <p class="translate-x-[-4px] text-grey text-[14px] mb-1">
+          <p class="translate-x-[-4px] text-grey text-[0.88rem] mb-1">
             <v-icon
               size="small"
               icon="svg:location"

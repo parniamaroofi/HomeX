@@ -17,7 +17,7 @@
           <!-- App title -->
           <v-col cols="4" class="text-white d-flex justify-center align-center">
             <v-icon icon="svg:home"></v-icon>
-            <span class="pl-1.5 text-[16px] font-bold">HomeX</span>
+            <span class="pl-2 text-[1.6rem]" style="font-family: 'Dancing Script'">HomeX</span>
           </v-col>
 
           <!-- Notification -->
@@ -35,7 +35,7 @@
     </div>
 
     <!-- Main Content -->
-    <div class="w-full mt-[-102px]">
+    <div class="w-full mt-[-100px]">
       <div class="pa-4">
         <!-- Saerch Card -->
         <v-card flat class="rounded-[--lg-radius]">
@@ -124,7 +124,7 @@ export default {
     Slider,
   },
 
-  mounted() {
+  created() {
     this.getData();
   },
 
