@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@mdi/font": "^7.3.67",
+    "@vueuse/components": "^10.5.0",
     "axios": "^1.5.1",
     "node-sass": "^9.0.0",
     "sass": "^1.69.3",

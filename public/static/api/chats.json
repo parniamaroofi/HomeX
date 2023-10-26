@@ -1,0 +1,33 @@
+{
+  "newMessages": 3,
+  "chats": [
+    {
+      "imageUrl": "/images/sample3.jpg",
+      "chatTitle": "Benjamin Brown",
+      "hasMessage": true,
+      "lastMessage": {
+        "text": "Thank you!",
+        "self": false,
+        "time": "15:04"
+      },
+      "unseen": 3
+    },
+    {
+      "imageUrl": "/images/sample1.jpg",
+      "chatTitle": "Parnia Maroofi",
+      "hasMessage": true,
+      "lastMessage": {
+        "text": "Nice! so i will be there tomorrow @ 6PM.",
+        "self": true,
+        "time": "Yesterday"
+      },
+      "unseen": 0
+    },
+    {
+      "imageUrl": "/images/sample2.jpg",
+      "chatTitle": "John Smith",
+      "hasMessage": false,
+      "unseen": 0
+    }
+  ]
+}

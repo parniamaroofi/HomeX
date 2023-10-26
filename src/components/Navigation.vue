@@ -55,17 +55,29 @@ export default {
     };
   },
 
-  watch: {
-    '$route.path': function () {
+  mounted() {
+    setTimeout(() => {
+      this.detectStepSize();
+    }, 100);
+  },
+
+  methods: {
+    detectStepSize() {
       // To find step size between nav items
       let container = document.querySelector('.nav_box');
       document.documentElement.style.setProperty(
         '--step-size',
-        (container.getBoundingClientRect().width - 40 - this.navItems.length * 57) /
+        (container.getBoundingClientRect().width - 40 - this.navItems.length * 52) /
           (this.navItems.length - 1) +
-          57 +
+          52 +
           'px'
       );
+    },
+  },
+
+  watch: {
+    '$route.path': function () {
+      this.detectStepSize();
     },
   },
 };

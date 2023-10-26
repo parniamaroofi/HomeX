@@ -43,7 +43,7 @@
           <p class="text-[1.05rem] mb-1">{{ item.title }}</p>
 
           <!-- item location -->
-          <p class="translate-x-[-4px] text-grey text-[0.88rem] mb-1">
+          <p class="translate-x-[-4px] text-grey text-[0.88rem] mb-1.5">
             <v-icon
               size="small"
               icon="svg:location"

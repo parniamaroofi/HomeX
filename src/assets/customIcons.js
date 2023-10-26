@@ -9,6 +9,7 @@ import send from '@/components/icons/Send.vue';
 import user from '@/components/icons/User.vue';
 import label from '@/components/icons/Label.vue';
 import phone from '@/components/icons/Phone.vue';
+import magnify from '@/components/icons/Magnify.vue';
 import parking from '@/components/icons/Parking.vue';
 import location from '@/components/icons/Location.vue';
 import bookmark from '@/components/icons/Bookmark.vue';
@@ -27,6 +28,7 @@ const iconsComponent = {
   user,
   label,
   phone,
+  magnify,
   parking,
   location,
   bookmark,

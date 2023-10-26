@@ -37,6 +37,7 @@ export default {
     }
 
     &.has_navigation {
+      min-height: calc(100dvh - 50px);
       margin-bottom: 50px;
     }
   }

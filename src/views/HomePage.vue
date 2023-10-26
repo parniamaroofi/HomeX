@@ -1,7 +1,7 @@
 <template>
   <div class="home_page bg-[#fafafa] min-h-[100dvh] h-full">
     <!-- Page Header -->
-    <div class="w-full h-[180px] bg-[#1b1b1b]">
+    <div class="w-full h-[180px] bg-[--header-bg]">
       <!-- Header content -->
       <div class="px-5 py-6">
         <v-row>
