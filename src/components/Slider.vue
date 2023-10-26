@@ -28,7 +28,13 @@
             <span class="text-grey">/{{ item.per }}</span>
           </div>
 
-          <div class="bg-white pa-1 rounded-full"><v-icon icon="svg:bookmark"></v-icon></div>
+          <v-btn
+            class="bg-white pa-1 rounded-full"
+            :icon="item.saved ? 'svg:bookmarkFilled' : 'svg:bookmark'"
+            height="35"
+            width="35"
+            @click.stop="item.saved = !item.saved"
+          ></v-btn>
         </div>
 
         <!-- item details -->

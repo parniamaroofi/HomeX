@@ -1,5 +1,5 @@
 <template>
-  <div class="home_page bg-[#fafafa] min-h-[100dvh]">
+  <div class="home_page bg-[#fafafa] min-h-[100dvh] h-full">
     <!-- Page Header -->
     <div class="w-full h-[180px] bg-[#1b1b1b]">
       <!-- Header content -->
@@ -95,7 +95,7 @@
         <Slider :title="'Recomended'" :items="homeData.recomended" />
       </div>
       <!-- The latest slider -->
-      <div class="mb-4">
+      <div class="mb-6">
         <Slider :title="'The latest'" :items="homeData.theLatest" />
       </div>
     </div>

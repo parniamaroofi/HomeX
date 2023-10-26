@@ -11,7 +11,13 @@
           @click="$router.push('/')"
         ></v-btn>
 
-        <v-btn color="white" icon="svg:bookmark" width="40" height="40"></v-btn>
+        <v-btn
+          color="white"
+          :icon="postData.saved ? 'svg:bookmarkFilled' : 'svg:bookmark'"
+          width="40"
+          height="40"
+          @click="postData.saved = !postData.saved"
+        ></v-btn>
       </div>
     </div>
 
@@ -64,9 +70,21 @@
       </div>
 
       <!-- Description -->
-      <div class="mt-6">
+      <div class="mt-6" v-if="postData.description">
         <p class="text-xl mb-2">Description</p>
-        <p class="text-gray-500 text-[0.9rem]">
+        <!-- when description character length is more than 80 -->
+        <p class="text-gray-500 text-[0.9rem]" v-if="postData.description.length > 80">
+          {{ !showMore ? `${postData.description.slice(0, 80)}...` : postData.description }}
+
+          <!-- Show more/Show less button -->
+          <span class="text-primary text-sm whitespace-pre cursor-pointer">
+            <span v-if="!showMore" @click="showMore = true">Show more </span>
+            <span v-else @click="showMore = false">Show less </span>
+          </span>
+        </p>
+
+        <!-- when description character length is equal to or less than 80 -->
+        <p v-else>
           {{ postData.description }}
         </p>
       </div>
@@ -134,12 +152,17 @@
 </template>
 
 <script>
+import { ref } from 'vue';
 export default {
   name: 'PostId',
 
-  data() {
+  setup() {
+    const postData = ref({});
+    const showMore = ref(false);
+
     return {
-      postData: {},
+      postData,
+      showMore,
     };
   },
 

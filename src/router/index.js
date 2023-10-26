@@ -14,10 +14,23 @@ export default createRouter({
         {
           path: '/',
           component: () => import('@/views/HomePage.vue'),
+          meta: {
+            navigation: true,
+          },
         },
         {
           path: '/post/:id',
           component: () => import('@/views/PostId.vue'),
+          meta: {
+            navigation: false,
+          },
+        },
+        {
+          path: '/chats',
+          component: () => import('@/views/Chats.vue'),
+          meta: {
+            navigation: true,
+          },
         },
       ],
     },
