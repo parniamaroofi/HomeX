@@ -103,7 +103,6 @@
 </template>
 
 <script>
-import { ref } from 'vue';
 import QuickSearch from '@/components/QuickSearch.vue';
 import Slider from '@/components/Slider.vue';
 export default {

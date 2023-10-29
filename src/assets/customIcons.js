@@ -7,6 +7,9 @@ import bell from '@/components/icons/Bell.vue';
 import bath from '@/components/icons/Bath.vue';
 import send from '@/components/icons/Send.vue';
 import user from '@/components/icons/User.vue';
+import copy from '@/components/icons/Copy.vue';
+import trash from '@/components/icons/Trash.vue';
+import reply from '@/components/icons/Reply.vue';
 import label from '@/components/icons/Label.vue';
 import phone from '@/components/icons/Phone.vue';
 import magnify from '@/components/icons/Magnify.vue';
@@ -26,6 +29,9 @@ const iconsComponent = {
   bath,
   send,
   user,
+  copy,
+  trash,
+  reply,
   label,
   phone,
   magnify,

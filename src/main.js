@@ -2,6 +2,9 @@ import { createApp } from 'vue';
 import './assets/style.scss';
 import App from './App.vue';
 import router from './router/index.js';
+import global from '@/mixin/global';
+import mitt from 'mitt';
+const emitter = mitt();
 
 // ----------------------------------------------------------------------------------------
 // ------------------------------- Vuetify config strat -----------------------------------
@@ -50,5 +53,8 @@ const app = createApp(App);
 import Axios from 'axios';
 app.config.globalProperties.$http = Axios;
 
+app.config.globalProperties.emitter = emitter;
+
+app.mixin(global);
 app.use(vuetify);
 app.use(router).mount('#app');

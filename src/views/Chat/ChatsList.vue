@@ -41,9 +41,10 @@
     <div class="pa-4 bg-white mt-[-10px] rounded-[--md-radius]">
       <!-- Chat box -->
       <div
+        class="hover:bg-[--hover-bg] cursor-pointer rounded-[5px] px-1.5"
+        @click="$router.push(`/chat/${item.id}`)"
         v-for="(item, index) in computedChats"
         :key="index"
-        class="hover:bg-[#ccd6fa61] cursor-pointer rounded-[5px] px-1.5"
       >
         <div class="d-flex justify-space-between align-center pt-2.5">
           <div class="d-flex align-center">
@@ -52,12 +53,12 @@
 
             <div class="ml-3">
               <!-- Title -->
-              <p class="mb-1 text-[1.05rem]">{{ item.chatTitle }}</p>
+              <p class="mb-1 text-[1.04rem]">{{ item.chatTitle }}</p>
 
               <!-- Last message -->
               <div>
                 <!-- When there is last message to show -->
-                <p v-if="item.hasMessage" class="w-[75%] text-grey text-[0.88rem] text-overflow">
+                <p v-if="item.hasMessage" class="w-[70%] text-grey text-[0.88rem] text-overflow">
                   <b v-if="item.lastMessage.self">You:</b> {{ item.lastMessage.text }}
                 </p>
 
@@ -79,7 +80,9 @@
             <div v-else class="h-[28px]">&nbsp;</div>
 
             <!-- Last message time -->
-            <p v-if="item.hasMessage" class="text-grey text-xs">{{ item.lastMessage.time }}</p>
+            <p v-if="item.hasMessage" class="text-grey text-xs whitespace-nowrap">
+              {{ item.lastMessage.time }}
+            </p>
           </div>
         </div>
         <v-divider class="mt-2.5" color="#fff"></v-divider>
@@ -97,7 +100,6 @@
 </template>
 
 <script>
-import { ref } from 'vue';
 export default {
   name: 'Chats',
 
@@ -120,9 +122,6 @@ export default {
   },
 
   methods: {
-    test(num) {
-      alert(num);
-    },
     openSearch() {
       this.searchMode = !this.searchMode;
       this.search = '';

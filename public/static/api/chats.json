@@ -2,32 +2,204 @@
   "newMessages": 3,
   "chats": [
     {
+      "id": "dc1f0ab0-3913-48d9-878f-87c2b0999489",
       "imageUrl": "/images/sample3.jpg",
       "chatTitle": "Benjamin Brown",
       "hasMessage": true,
       "lastMessage": {
         "text": "Thank you!",
         "self": false,
-        "time": "15:04"
+        "time": "11:21"
       },
-      "unseen": 3
+      "unseen": 3,
+      "lastseen": "last seen at 1:48 AM",
+      "isOnline": true,
+      "isTyping": false,
+      "messages": [
+        {
+          "date": "2023-09-26",
+          "messages": [
+            {
+              "id": "a06a6498-5be9-4fe1-8747-6c810f406ead",
+              "text": "Hello Mr Brown!",
+              "time": "15:29",
+              "senderId": "bd2f139e-70d0-47a0-bda7-7a08d514eaae",
+              "senderName": "Parnia1106",
+              "seen": true,
+              "self": true
+            },
+            {
+              "id": "1f59eb90-2502-478a-b70f-0ceebdf119da",
+              "text": "Hello!",
+              "time": "15:30",
+              "senderId": "63cd1b0f-6aa3-4da2-95a1-7d90b7c56096",
+              "senderName": "Benjamin Brown",
+              "seen": true,
+              "self": false,
+              "repliedMessage": {
+                "id": "a06a6498-5be9-4fe1-8747-6c810f406ead",
+                "text": "Hello Mr Brown!",
+                "date": "2023-09-26",
+                "time": "15:29",
+                "senderName": "Parnia1106"
+              }
+            },
+            {
+              "id": "415af762-c015-419f-9caf-d7add89bdd54",
+              "text": "I think we can make an appointment so that you can see the inside of the house...",
+              "time": "15:30",
+              "senderId": "63cd1b0f-6aa3-4da2-95a1-7d90b7c56096",
+              "senderName": "Benjamin Brown",
+              "seen": false,
+              "self": false
+            },
+            {
+              "id": "75b3e860-f058-4e94-a25f-14fc6f83dd43",
+              "text": "Yes! I think so...",
+              "time": "15:31",
+              "senderId": "bd2f139e-70d0-47a0-bda7-7a08d514eaae",
+              "senderName": "Parnia1106",
+              "seen": true,
+              "self": true,
+              "repliedMessage": {
+                "id": "415af762-c015-419f-9caf-d7add89bdd54",
+                "text": "I think we can make an appointment so that you can see the inside of the house...",
+                "date": "2023-09-26",
+                "time": "15:30",
+                "senderName": "Benjamin Brown"
+              }
+            },
+            {
+              "id": "81db202f-dd72-445f-a86e-ab7b3ed84039",
+              "text": "What day and time is convenient for you?",
+              "time": "15:31",
+              "senderId": "bd2f139e-70d0-47a0-bda7-7a08d514eaae",
+              "senderName": "Parnia1106",
+              "seen": true,
+              "self": true
+            },
+            {
+              "id": "0e594914-3aa0-4b79-ba9a-4e3e3095ebba",
+              "text": "My first free time is on October 11.",
+              "time": "15:32",
+              "senderId": "bd2f139e-70d0-47a0-bda7-7a08d514eaae",
+              "senderName": "Parnia1106",
+              "seen": true,
+              "self": true
+            },
+            {
+              "id": "69e8b6b8-6c77-44ab-a165-034c66863166",
+              "text": "So good! I'm also free on the 11th",
+              "time": "15:35",
+              "senderId": "63cd1b0f-6aa3-4da2-95a1-7d90b7c56096",
+              "senderName": "Benjamin Brown",
+              "seen": false,
+              "self": false
+            },
+            {
+              "id": "267f148c-e182-4ab1-bb23-8c0b94e3288c",
+              "text": "So I will call you...",
+              "time": "15:35",
+              "senderId": "63cd1b0f-6aa3-4da2-95a1-7d90b7c56096",
+              "senderName": "Benjamin Brown",
+              "seen": false,
+              "self": false
+            }
+          ]
+        },
+        {
+          "date": "2023-09-28",
+          "messages": [
+            {
+              "id": "5aa6ae5b-fc90-4152-bbc5-0e193f2ced12",
+              "text": "Could you please check your email?",
+              "time": "11:10",
+              "senderId": "bd2f139e-70d0-47a0-bda7-7a08d514eaae",
+              "senderName": "Parnia1106",
+              "seen": true,
+              "self": true
+            },
+            {
+              "id": "50d7aed9-151f-4b61-b70f-5eaa9ca0b1b6",
+              "text": "Sure",
+              "time": "11:15",
+              "senderId": "63cd1b0f-6aa3-4da2-95a1-7d90b7c56096",
+              "senderName": "Benjamin Brown",
+              "seen": false,
+              "self": false
+            },
+            {
+              "id": "a252189a-263b-4f2e-a3b1-b7abfac3e356",
+              "text": "Documents are complete",
+              "time": "11:21",
+              "senderId": "63cd1b0f-6aa3-4da2-95a1-7d90b7c56096",
+              "senderName": "Benjamin Brown",
+              "seen": false,
+              "self": false
+            },
+            {
+              "id": "b7c9dadd-537d-41b5-83d1-accc7ed42b2e",
+              "text": "Thank you!",
+              "time": "11:21",
+              "senderId": "63cd1b0f-6aa3-4da2-95a1-7d90b7c56096",
+              "senderName": "Benjamin Brown",
+              "seen": false,
+              "self": false
+            }
+          ]
+        }
+      ]
     },
     {
+      "id": "528c6fcc-aaad-4846-bb50-5c88c00c348b",
       "imageUrl": "/images/sample1.jpg",
       "chatTitle": "Parnia Maroofi",
       "hasMessage": true,
       "lastMessage": {
         "text": "Nice! so i will be there tomorrow @ 6PM.",
         "self": true,
-        "time": "Yesterday"
+        "time": "October 22"
       },
-      "unseen": 0
+      "unseen": 0,
+      "lastseen": "last seen at 12:12 PM",
+      "isOnline": false,
+      "isTyping": false,
+      "messages": [
+        {
+          "date": "2023-09-22",
+          "messages": [
+            {
+              "id": "b7c9dadd-537d-41b5-83d1-accc7ed42b2e",
+              "text": "Please be at the location tommorow at 6PM!",
+              "time": "11:29",
+              "senderId": "a9daade5-55dd-47e7-aa26-1ae10be3e5f5",
+              "senderName": "Parnia Maroofi",
+              "seen": false,
+              "self": false
+            },
+            {
+              "id": "39ec897d-abb8-49aa-a9cf-2887cf3130b9",
+              "text": "Nice! so i will be there tomorrow @ 6PM.",
+              "time": "11:45",
+              "senderId": "bd2f139e-70d0-47a0-bda7-7a08d514eaae",
+              "senderName": "پرنیا معروفی",
+              "seen": false,
+              "self": true
+            }
+          ]
+        }
+      ]
     },
     {
+      "id": "366b105f-13ee-4a20-abc3-e7305927015a",
       "imageUrl": "/images/sample2.jpg",
       "chatTitle": "John Smith",
       "hasMessage": false,
-      "unseen": 0
+      "unseen": 0,
+      "lastseen": "",
+      "isOnline": false,
+      "isTyping": false,
+      "messages": []
     }
   ]
 }

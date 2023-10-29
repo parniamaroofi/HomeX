@@ -27,9 +27,16 @@ export default createRouter({
         },
         {
           path: '/chats',
-          component: () => import('@/views/Chats.vue'),
+          component: () => import('@/views/Chat/ChatsList.vue'),
           meta: {
             navigation: true,
+          },
+        },
+        {
+          path: '/chat/:id',
+          component: () => import('@/views/Chat/ChatId.vue'),
+          meta: {
+            navigation: false,
           },
         },
       ],

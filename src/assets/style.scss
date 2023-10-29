@@ -5,11 +5,12 @@
   --lg-radius: 20px;
 
   // Colors
-  --primary-color: #5378f7
+  --primary-color: #5378f7;
   --lighten-gray: #f5f5f5;
 
   // Background
   --header-bg: #1b1b1b;
+  --hover-bg: #ccd6fa61;
 
   --step-size: 70px;
 }
@@ -38,16 +39,31 @@ input,
   text-transform: none !important;
 }
 
+.v-list {
+  * {
+    font-size: 15px !important;
+  }
+}
+
+.w-fit {
+  width: fit-content !important;
+}
+
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+// SVG colors
 .primary-icon {
   path,
   circle {
     stroke: #5378f7;
   }
 }
-
-.v-list {
-  * {
-    font-size: 15px !important;
+.white-icon {
+  path,
+  circle {
+    stroke: #fff;
   }
 }
 
