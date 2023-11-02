@@ -53,7 +53,7 @@
 
             <div class="ml-3">
               <!-- Title -->
-              <p class="mb-1 text-[1.04rem]">{{ item.chatTitle }}</p>
+              <p class="mb-1 text-[1.02rem]">{{ item.chatTitle }}</p>
 
               <!-- Last message -->
               <div>

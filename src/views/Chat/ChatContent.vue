@@ -1,12 +1,5 @@
 <template>
-  <div
-    class="chat_content relative"
-    @scroll="computedGoDownButton()"
-    :class="{
-      hasReplyBox: hasReply, // set appropriate div height when the replay box is displayed
-      'scroll-smooth': smoothScroll, // defines the behavior of the scroll
-    }"
-  >
+  <div class="chat_content relative" @scroll="computedGoDownButton()">
     <!-- NO CONTENT box when there is no messages for a chat -->
     <div
       class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
@@ -109,6 +102,7 @@
                 <v-card class="pa-2 rounded-lg">
                   <div
                     class="pa-2 d-flex align-center hover:bg-[#ebebeb] rounded-md cursor-pointer"
+                    @click="doReplyMessage(message)"
                   >
                     <v-icon icon="svg:reply" size="small" class="mr-2"></v-icon>
                     <span class="text-[0.9rem]">Reply</span>

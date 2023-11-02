@@ -4,9 +4,7 @@ export default {
   setup(props) {
     const messages = ref(props.chatData.messages);
     const interval = ref('');
-    const hasReply = ref(false);
     const replyMessage = ref({});
-    const smoothScroll = ref(false);
     const showGoDownBtn = ref(false);
     const hasNewMessage = ref(false);
     const repliedMessageID = ref('');
@@ -30,9 +28,7 @@ export default {
       months,
       interval,
       messages,
-      hasReply,
       replyMessage,
-      smoothScroll,
       showGoDownBtn,
       hasNewMessage,
       repliedMessageID,
@@ -41,10 +37,10 @@ export default {
   },
 
   mounted() {
-    this.scrollToEnd();
+    this.emitter.emit('doScrollToEnd');
 
-    this.emitter.on('scrollToEnd', () => {
-      this.scrollToEnd();
+    this.emitter.on('showRepliedMessage', (id) => {
+      this.showMessage(id);
     });
   },
 
@@ -68,43 +64,29 @@ export default {
 
     // This function is called to reply a message
     doReplyMessage(message) {
-      this.hasReply = true;
-      this.replyMessage = message;
-      document.getElementById('field_box').focus();
-
-      let content = document.querySelector('.chat_content');
-      if (content.scrollTop > content.scrollHeight - 1000) {
-        setTimeout(() => {
-          this.scrollToEnd();
-        }, 10);
-      }
-    },
-
-    // this function scroll the page to the bottom in every refreshing
-    scrollToEnd() {
-      var container = document.querySelector('.chat_content');
-      var scrollHeight = container.scrollHeight;
-      container.scrollTop = scrollHeight;
+      this.$emit('doReply', message);
     },
 
     // This function is called to show the replied meesage we clicked on it
     showMessage(messageId) {
-      this.repliedMessageID = messageId;
+      setTimeout(() => {
+        this.repliedMessageID = messageId;
 
-      if (document.getElementById(messageId)) {
-        document.getElementById(messageId).scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
+        if (document.getElementById(messageId)) {
+          document.getElementById(messageId).scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          });
 
-        this.boldMessageStyle =
-          'background-color: #c9c8eb48; border-radius:10px; transition: .3s linear;';
+          this.boldMessageStyle =
+            'background-color: #c8d3eb48; border-radius:10px; transition: .3s linear;';
 
-        clearInterval(this.interval);
-        this.interval = setInterval(() => {
-          this.boldMessageStyle = 'background-color: transparent;transition: .3s linear;';
-        }, 2000);
-      }
+          clearInterval(this.interval);
+          this.interval = setInterval(() => {
+            this.boldMessageStyle = 'background-color: transparent;transition: .3s linear;';
+          }, 2000);
+        }
+      }, 400);
     },
 
     // This function is called to show time only once for messages sent at the same time

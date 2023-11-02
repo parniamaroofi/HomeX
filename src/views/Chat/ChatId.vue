@@ -24,8 +24,42 @@
 
     <!-- Content box -->
     <div class="pa-3 pt-1 bg-white mt-[-12px] rounded-[--md-radius]">
-      <chat-content :chatData="chatData" />
+      <chat-content
+        class="chat_body"
+        :class="{
+          hasReplyBox: hasReply, // set appropriate div height when the replay box is displayed
+          'scroll-smooth': smoothScroll, // defines the behavior of the scroll
+        }"
+        :chatData="chatData"
+        @doReply="doReply"
+      />
 
+      <!-- Reply box -->
+      <div
+        v-if="hasReply"
+        @click="showMessage(selectedMessage.id)"
+        class="pa-4 my-2 h-[54px] bg-[--lighten-gray] rounded-[--sm-radius] d-flex align-center justify-space-between shadow-inner"
+      >
+        <div>
+          <v-icon size="large" color="primary" class="scale-x-[-1]">mdi-reply</v-icon>
+        </div>
+
+        <div class="mx-4 text-[0.92rem] w-[75%]">
+          <!-- Sender name -->
+          <p class="text-primary">{{ selectedMessage.senderName }}</p>
+          <!-- Message text -->
+          <p class="text-sm text-grey text-overflow">
+            {{ selectedMessage.text }}
+          </p>
+        </div>
+
+        <!-- Close icon -->
+        <div>
+          <v-icon @click="closeReply" color="grey">mdi-close</v-icon>
+        </div>
+      </div>
+
+      <!-- Footer box -->
       <div class="d-flex">
         <v-textarea
           rows="1"
@@ -36,6 +70,7 @@
           placeholder="Message..."
           class="custom_textarea w-full"
           v-model.trim="messageField"
+          @click="doScroll"
         ></v-textarea>
         <v-btn
           @click="messageField ? sendMessage() : ''"
@@ -66,18 +101,34 @@ export default {
 
   setup() {
     const chatData = ref({});
+    const hasReply = ref(false);
     const isLoaded = ref(false);
     const messageField = ref('');
+    const selectedMessage = ref({});
+    const smoothScroll = ref(false);
 
     return {
       chatData,
+      hasReply,
       isLoaded,
       messageField,
+      smoothScroll,
+      selectedMessage,
     };
   },
 
   created() {
     this.getData();
+  },
+
+  mounted() {
+    this.emitter.on('doScrollToEnd', () => {
+      this.scrollToEnd();
+    });
+
+    setTimeout(() => {
+      this.smoothScroll = true;
+    }, 1000);
   },
 
   methods: {
@@ -120,13 +171,20 @@ export default {
       return yyyy + '-' + mm + '-' + dd;
     },
 
+    // this function scroll the page to the bottom in every refreshing
+    scrollToEnd() {
+      var container = document.querySelector('.chat_body');
+      var scrollHeight = container.scrollHeight;
+      container.scrollTop = scrollHeight;
+    },
+
     sendMessage() {
       let message = {
         id: uuidv4(),
         self: true,
         text: this.parsedText,
         time: this.currentTime(),
-        // repliedMessage: this.hasReply ? this.repliedMessage : {},
+        repliedMessage: this.hasReply ? this.selectedMessage : {},
       };
 
       if (this.chatData.messages.length) {
@@ -153,11 +211,45 @@ export default {
         });
       }
 
+      this.hasReply = false;
       this.messageField = '';
+      this.selectedMessage = {};
       document.getElementById('message_field').focus();
       setTimeout(() => {
-        this.emitter.emit('scrollToEnd');
-      }, 10);
+        this.scrollToEnd();
+      }, 5);
+    },
+
+    // This function is called to open reply box and send a reply message
+    doReply(message) {
+      this.hasReply = true;
+      this.selectedMessage = message;
+      document.getElementById('message_field').focus();
+      setTimeout(() => {
+        this.scrollToEnd();
+      }, 700);
+
+      // let content = document.querySelector('.chat_body');
+      // if (content.scrollTop > content.scrollHeight - 500) {
+      //   setTimeout(() => {
+      //     this.scrollToEnd();
+      //   }, 800);
+      // }
+    },
+
+    closeReply() {
+      this.hasReply = false;
+      this.selectedMessage = '';
+    },
+
+    showMessage(id) {
+      this.emitter.emit('showRepliedMessage', id);
+    },
+
+    doScroll() {
+      setTimeout(() => {
+        this.scrollToEnd();
+      }, 500);
     },
   },
 
@@ -170,21 +262,5 @@ export default {
 </script>
 
 <style lang="scss">
-.chat_id {
-  .custom_textarea {
-    .v-field {
-      box-shadow: none;
-      border-radius: 10px;
-      background-color: var(--lighten-gray);
-
-      ::placeholder {
-        font-size: 0.9rem;
-      }
-    }
-    textarea {
-      line-height: 20px;
-      font-size: 0.9rem;
-    }
-  }
-}
+@import '@/assets/chat.scss';
 </style>
