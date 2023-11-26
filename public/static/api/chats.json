@@ -24,7 +24,7 @@
               "text": "Hello Mr Brown!",
               "time": "15:29",
               "senderId": "bd2f139e-70d0-47a0-bda7-7a08d514eaae",
-              "senderName": "Parnia1106",
+              "senderName": "You",
               "seen": true,
               "self": true
             },
@@ -41,7 +41,7 @@
                 "text": "Hello Mr Brown!",
                 "date": "2023-09-26",
                 "time": "15:29",
-                "senderName": "Parnia1106"
+                "senderName": "You"
               }
             },
             {
@@ -58,7 +58,7 @@
               "text": "Yes! I think so...",
               "time": "15:31",
               "senderId": "bd2f139e-70d0-47a0-bda7-7a08d514eaae",
-              "senderName": "Parnia1106",
+              "senderName": "You",
               "seen": true,
               "self": true,
               "repliedMessage": {
@@ -74,7 +74,7 @@
               "text": "What day and time is convenient for you?",
               "time": "15:31",
               "senderId": "bd2f139e-70d0-47a0-bda7-7a08d514eaae",
-              "senderName": "Parnia1106",
+              "senderName": "You",
               "seen": true,
               "self": true
             },
@@ -83,7 +83,7 @@
               "text": "My first free time is on October 11.",
               "time": "15:32",
               "senderId": "bd2f139e-70d0-47a0-bda7-7a08d514eaae",
-              "senderName": "Parnia1106",
+              "senderName": "You",
               "seen": true,
               "self": true
             },
@@ -115,7 +115,7 @@
               "text": "Could you please check your email?",
               "time": "11:10",
               "senderId": "bd2f139e-70d0-47a0-bda7-7a08d514eaae",
-              "senderName": "Parnia1106",
+              "senderName": "You",
               "seen": true,
               "self": true
             },

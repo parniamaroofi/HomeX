@@ -1,7 +1,9 @@
 <template>
   <div class="chat_id" v-if="isLoaded">
     <!-- Header box -->
-    <div class="pa-4 pt-1 bg-[--header-bg] h-[100px] d-flex justify-space-between align-center">
+    <div
+      class="pa-4 pt-1 bg-[--header-bg] h-[100px] d-flex justify-space-between align-center"
+    >
       <v-btn
         variant="tonal"
         color="white"
@@ -14,12 +16,19 @@
 
       <div class="text-center">
         <p class="text-white text-[18px]">{{ chatData.chatTitle }}</p>
-        <p v-if="!chatData.isOnline" class="text-grey text-sm">{{ chatData.lastseen }}</p>
+        <p v-if="!chatData.isOnline" class="text-grey text-sm">
+          {{ chatData.lastseen }}
+        </p>
         <p v-else class="text-primary text-sm">Online</p>
         <!-- <p class="text-grey text-sm">Is typing...</p> -->
       </div>
 
-      <img :src="chatData.imageUrl" width="45" height="45" class="rounded-full" />
+      <img
+        :src="chatData.imageUrl"
+        width="45"
+        height="45"
+        class="rounded-full"
+      />
     </div>
 
     <!-- Content box -->
@@ -41,7 +50,9 @@
         class="pa-4 my-2 h-[54px] bg-[--lighten-gray] rounded-[--sm-radius] d-flex align-center justify-space-between shadow-inner"
       >
         <div>
-          <v-icon size="large" color="primary" class="scale-x-[-1]">mdi-reply</v-icon>
+          <v-icon size="large" color="primary" class="scale-x-[-1]"
+            >mdi-reply</v-icon
+          >
         </div>
 
         <div class="mx-4 text-[0.92rem] w-[75%]">
@@ -49,7 +60,7 @@
           <p class="text-primary">{{ selectedMessage.senderName }}</p>
           <!-- Message text -->
           <p class="text-sm text-grey text-overflow">
-            {{ selectedMessage.text }}
+            {{ removeBrTags(selectedMessage.text) }}
           </p>
         </div>
 
@@ -71,7 +82,22 @@
           class="custom_textarea w-full"
           v-model.trim="messageField"
           @click="doScroll"
-        ></v-textarea>
+        >
+          <template v-slot:prepend-inner>
+            <v-menu>
+              <template v-slot:activator="{ props }">
+                <v-icon icon="svg:attach" class="mr-2" v-bind="props"></v-icon>
+              </template>
+
+              <v-card class="pa-3 rounded-lg">
+                <div @click="openMapDialog()">
+                  <v-icon icon="svg:location" class="gray-icon mr-1"></v-icon>
+                  <span class="text-sm text-[#868686]">Location</span>
+                </div>
+              </v-card>
+            </v-menu>
+          </template>
+        </v-textarea>
         <v-btn
           @click="messageField ? sendMessage() : ''"
           color="primary"
@@ -84,33 +110,63 @@
         </v-btn>
       </div>
     </div>
+
+    <v-dialog
+      v-model="mapDialog"
+      fullscreen
+      :scrim="true"
+      transition="dialog-bottom-transition"
+    >
+      <v-card>
+        <div class="lg:max-w-[400px] mx-auto w-full h-full relative">
+          <Map class="absolute top-0 left-0" />
+
+          <div
+            class="w-full pa-4 absolute bottom-0 right-0 d-flex justify-space-between z-[400]"
+          >
+            <v-btn icon color="error" @click="mapDialog = false">
+              <v-icon class="white-icon">mdi-chevron-down</v-icon>
+            </v-btn>
+            <v-btn icon color="primary"
+              ><v-icon class="white-icon">svg:send</v-icon></v-btn
+            >
+          </div>
+        </div>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
 <script>
-import { v4 as uuidv4 } from 'uuid'; // id generator package
-import ChatContent from './ChatContent.vue';
-import TextField from '@/components/microComponents/TextField.vue';
+import { v4 as uuidv4 } from "uuid"; // id generator package
+import Map from "@/components/Map.vue";
+import ChatContent from "./ChatContent.vue";
+import TextField from "@/components/microComponents/TextField.vue";
 export default {
-  name: 'ChatId',
+  name: "ChatId",
 
   components: {
+    Map,
     TextField,
     ChatContent,
   },
 
   setup() {
+    const map = ref(null);
     const chatData = ref({});
     const hasReply = ref(false);
     const isLoaded = ref(false);
-    const messageField = ref('');
+    const mapDialog = ref(false);
+    const messageField = ref("");
     const selectedMessage = ref({});
     const smoothScroll = ref(false);
 
     return {
+      map,
       chatData,
       hasReply,
       isLoaded,
+      mapDialog,
       messageField,
       smoothScroll,
       selectedMessage,
@@ -122,7 +178,7 @@ export default {
   },
 
   mounted() {
-    this.emitter.on('doScrollToEnd', () => {
+    this.emitter.on("doScrollToEnd", () => {
       this.scrollToEnd();
     });
 
@@ -131,17 +187,25 @@ export default {
     }, 1000);
   },
 
+  onBeforeUnmount() {
+    if (this.map) {
+      this.map.remove();
+    }
+  },
+
   methods: {
     getData() {
       this.$http
-        .get('/static/api/chats.json', {
+        .get("/static/api/chats.json", {
           headers: {
-            Authorization: 'Bearer: ' + localStorage.getItem('token'),
+            Authorization: "Bearer: " + localStorage.getItem("token"),
           },
         })
 
         .then((res) => {
-          this.chatData = res.data.chats.filter((x) => x.id == this.$route.params.id)[0];
+          this.chatData = res.data.chats.filter(
+            (x) => x.id == this.$route.params.id
+          )[0];
           setTimeout(() => {
             this.isLoaded = true;
           }, 200);
@@ -155,25 +219,25 @@ export default {
     currentTime() {
       let today = new Date();
       let hour, minute;
-      hour = ('0' + today.getHours()).slice(-2);
-      minute = ('0' + today.getMinutes()).slice(-2);
+      hour = ("0" + today.getHours()).slice(-2);
+      minute = ("0" + today.getMinutes()).slice(-2);
 
-      return hour + ':' + minute;
+      return hour + ":" + minute;
     },
 
     // This function is called to get current date
     currentDate() {
       let today = new Date();
-      let dd = String(today.getDate()).padStart(2, '0');
-      let mm = String(today.getMonth()).padStart(2, '0');
+      let dd = String(today.getDate()).padStart(2, "0");
+      let mm = String(today.getMonth()).padStart(2, "0");
       let yyyy = today.getFullYear();
 
-      return yyyy + '-' + mm + '-' + dd;
+      return yyyy + "-" + mm + "-" + dd;
     },
 
     // this function scroll the page to the bottom in every refreshing
     scrollToEnd() {
-      var container = document.querySelector('.chat_body');
+      var container = document.querySelector(".chat_body");
       var scrollHeight = container.scrollHeight;
       container.scrollTop = scrollHeight;
     },
@@ -182,6 +246,7 @@ export default {
       let message = {
         id: uuidv4(),
         self: true,
+        senderName: "You",
         text: this.parsedText,
         time: this.currentTime(),
         repliedMessage: this.hasReply ? this.selectedMessage : {},
@@ -212,9 +277,9 @@ export default {
       }
 
       this.hasReply = false;
-      this.messageField = '';
+      this.messageField = "";
       this.selectedMessage = {};
-      document.getElementById('message_field').focus();
+      document.getElementById("message_field").focus();
       setTimeout(() => {
         this.scrollToEnd();
       }, 5);
@@ -224,10 +289,10 @@ export default {
     doReply(message) {
       this.hasReply = true;
       this.selectedMessage = message;
-      document.getElementById('message_field').focus();
+      document.getElementById("message_field").focus();
       setTimeout(() => {
         this.scrollToEnd();
-      }, 700);
+      }, 10);
 
       // let content = document.querySelector('.chat_body');
       // if (content.scrollTop > content.scrollHeight - 500) {
@@ -239,11 +304,17 @@ export default {
 
     closeReply() {
       this.hasReply = false;
-      this.selectedMessage = '';
+      this.selectedMessage = "";
     },
 
     showMessage(id) {
-      this.emitter.emit('showRepliedMessage', id);
+      this.emitter.emit("showRepliedMessage", id);
+    },
+
+    removeBrTags(str) {
+      if (str) {
+        return str.replaceAll("<br>", " ");
+      }
     },
 
     doScroll() {
@@ -251,16 +322,20 @@ export default {
         this.scrollToEnd();
       }, 500);
     },
+
+    openMapDialog() {
+      this.mapDialog = true;
+    },
   },
 
   computed: {
     parsedText() {
-      return this.messageField.replace(/\n/g, '<br>');
+      return this.messageField.replace(/\n/g, "<br>");
     },
   },
 };
 </script>
 
 <style lang="scss">
-@import '@/assets/chat.scss';
+@import "@/assets/chat.scss";
 </style>

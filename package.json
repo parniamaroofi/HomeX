@@ -9,9 +9,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@elfalem/leaflet-curve": "0.7.0",
+    "@tweenjs/tween.js": "17.2.0",
     "@mdi/font": "^7.3.67",
     "axios": "^1.5.1",
     "mitt": "^3.0.1",
+    "leaflet": "1.7.1",
     "node-sass": "^9.0.0",
     "sass": "^1.69.3",
     "sass-loader": "^13.3.2",
@@ -23,6 +26,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
+    "@vue-leaflet/vue-leaflet": "^0.10.1",
     "vite": "^4.4.5"
   }
 }
