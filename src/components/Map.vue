@@ -1,5 +1,5 @@
 <template>
-  <div id="mapContainer" class="h-full w-full"></div>
+  <div id="mapContainer" class="h-[91dvh] w-full"></div>
 </template>
 
 <script>
@@ -11,13 +11,13 @@ export default {
   name: "HomeXMap",
 
   data() {
-    return {};
+    return { map: null };
   },
 
   mounted() {
     setTimeout(() => {
       this.map = L.map("mapContainer").setView(
-        [35.79734422174671, 51.41987469663432],
+        [35.796198683501956, 51.417160039142345],
         17
       );
       L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {

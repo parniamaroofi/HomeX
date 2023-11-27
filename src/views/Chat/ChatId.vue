@@ -105,6 +105,7 @@
           width="56"
           height="56"
           icon
+          flat
         >
           <v-icon class="white-icon" size="x-large" icon="svg:send"></v-icon>
         </v-btn>
@@ -119,17 +120,24 @@
     >
       <v-card>
         <div class="lg:max-w-[400px] mx-auto w-full h-full relative">
-          <Map class="absolute top-0 left-0" />
+          <Map />
 
-          <div
-            class="w-full pa-4 absolute bottom-0 right-0 d-flex justify-space-between z-[400]"
-          >
-            <v-btn icon color="error" @click="mapDialog = false">
-              <v-icon class="white-icon">mdi-chevron-down</v-icon>
+          <div class="absolute right-4 bottom-[110px] z-[400]">
+            <v-btn icon color="white" class="ml-3">
+              <v-icon class="gray-icon">svg:currentLocation</v-icon>
             </v-btn>
-            <v-btn icon color="primary"
-              ><v-icon class="white-icon">svg:send</v-icon></v-btn
-            >
+          </div>
+
+          <div class="w-full d-flex gap-x-3 pa-4">
+            <v-btn icon color="primary" flat>
+              <v-icon class="white-icon">svg:location</v-icon>
+            </v-btn>
+            <div>
+              <p class="text-[#868686]">Send selected location</p>
+              <p class="text-[#868686] text-sm">
+                (35.796198683501956, 51.417160039142345)
+              </p>
+            </div>
           </div>
         </div>
       </v-card>
@@ -175,6 +183,22 @@ export default {
 
   created() {
     this.getData();
+
+    const success = (position) => {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      console.log(latitude);
+
+      // Do something with the position
+    };
+
+    const error = (err) => {
+      console.log("error");
+    };
+
+    // This will open permission popup
+    navigator.geolocation.getCurrentPosition(success, error);
   },
 
   mounted() {

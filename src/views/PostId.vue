@@ -1,13 +1,17 @@
 <template>
   <div class="post_id">
     <!-- Post Images -->
-    <div class="image_box" :style="`background-image: url(${postData.imageUrl})`">
+    <div
+      class="image_box"
+      :style="`background-image: url(${postData.imageUrl})`"
+    >
       <div class="pa-4 d-flex justify-space-between">
         <v-btn
           color="white"
           icon="svg:chevronLeft"
           width="40"
           height="40"
+          flat
           @click="$router.push('/')"
         ></v-btn>
 
@@ -16,6 +20,7 @@
           :icon="postData.saved ? 'svg:bookmarkFilled' : 'svg:bookmark'"
           width="40"
           height="40"
+          flat
           @click="postData.saved = !postData.saved"
         ></v-btn>
       </div>
@@ -42,7 +47,8 @@
           <div>
             <v-icon icon="svg:bed" size="small"></v-icon>
             <span class="text-sm pl-1"
-              >{{ postData.bed }} {{ Number(postData.bed) == 1 ? 'Bed' : 'Beds' }}</span
+              >{{ postData.bed }}
+              {{ Number(postData.bed) == 1 ? "Bed" : "Beds" }}</span
             >
           </div>
           <v-divider vertical></v-divider>
@@ -57,7 +63,7 @@
             <v-icon icon="svg:parking" size="small"></v-icon>
             <span class="text-sm pl-1"
               >{{ postData.parking }}
-              {{ Number(postData.parking) == 1 ? 'Parking' : 'Parkings' }}</span
+              {{ Number(postData.parking) == 1 ? "Parking" : "Parkings" }}</span
             >
           </div>
           <v-divider vertical></v-divider>
@@ -73,8 +79,15 @@
       <div class="mt-6" v-if="postData.description">
         <p class="text-xl mb-2">Description</p>
         <!-- when description character length is more than 80 -->
-        <p class="text-gray-500 text-[0.9rem]" v-if="postData.description.length > 80">
-          {{ !showMore ? `${postData.description.slice(0, 80)}...` : postData.description }}
+        <p
+          class="text-gray-500 text-[0.9rem]"
+          v-if="postData.description.length > 80"
+        >
+          {{
+            !showMore
+              ? `${postData.description.slice(0, 80)}...`
+              : postData.description
+          }}
 
           <!-- Show more/Show less button -->
           <span class="text-primary text-sm whitespace-pre cursor-pointer">
@@ -90,10 +103,17 @@
       </div>
 
       <!-- Contact info -->
-      <div class="mt-6 border border-gray pa-2 rounded-full d-flex justify-space-between">
+      <div
+        class="mt-6 border border-gray pa-2 rounded-full d-flex justify-space-between"
+      >
         <div class="d-flex align-center">
           <!-- Contact Avatar -->
-          <img :src="postData.contactAvatar" width="50" height="50" class="rounded-full mr-3" />
+          <img
+            :src="postData.contactAvatar"
+            width="50"
+            height="50"
+            class="rounded-full mr-3"
+          />
 
           <!-- Contact Name and Role -->
           <div>
@@ -139,12 +159,21 @@
         class="sticky bottom-4 pa-2 rounded-full bg-white w-full d-flex justify-space-between align-center shadow-md"
       >
         <div class="ml-2">
-          <span class="text-primary font-bold">${{ Number(postData.price).toLocaleString() }}</span>
+          <span class="text-primary font-bold"
+            >${{ Number(postData.price).toLocaleString() }}</span
+          >
           <span class="text-grey">/{{ postData.per }}</span>
         </div>
 
         <div>
-          <v-btn color="primary" class="rounded-full" height="48" width="150">Book now</v-btn>
+          <v-btn
+            color="primary"
+            class="rounded-full"
+            height="48"
+            width="150"
+            flat
+            >Book now</v-btn
+          >
         </div>
       </div>
     </div>
@@ -153,7 +182,7 @@
 
 <script>
 export default {
-  name: 'PostId',
+  name: "PostId",
 
   setup() {
     const postData = ref({});
@@ -172,14 +201,16 @@ export default {
   methods: {
     getData() {
       this.$http
-        .get('/static/api/posts.json', {
+        .get("/static/api/posts.json", {
           headers: {
-            Authorization: 'Bearer: ' + localStorage.getItem('token'),
+            Authorization: "Bearer: " + localStorage.getItem("token"),
           },
         })
 
         .then((res) => {
-          this.postData = res.data.filter((x) => x.id == this.$route.params.id)[0];
+          this.postData = res.data.filter(
+            (x) => x.id == this.$route.params.id
+          )[0];
         })
         .catch((err) => {
           console.log(err);

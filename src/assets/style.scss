@@ -35,7 +35,6 @@ input,
 
 .v-btn {
   font-weight: 400 !important;
-  box-shadow: none !important;
   text-transform: none !important;
 }
 
@@ -62,13 +61,13 @@ input,
 }
 .white-icon {
   path,
-  circle {
+  circle,line {
     stroke: #fff;
   }
 }
 .gray-icon {
   path,
-  circle {
+  circle,line {
     stroke: #868686;
   }
 }

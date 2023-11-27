@@ -20,6 +20,7 @@ import bookmark from "@/components/icons/Bookmark.vue";
 import document from "@/components/icons/Document.vue";
 import chevronLeft from "@/components/icons/ChevronLeft.vue";
 import bookmarkFilled from "@/components/icons/BookmarkFilled.vue";
+import currentLocation from "@/components/icons/CurrentLocation.vue";
 
 const iconsComponent = {
   bed,
@@ -43,6 +44,7 @@ const iconsComponent = {
   document,
   chevronLeft,
   bookmarkFilled,
+  currentLocation,
 };
 
 const customIcons = {

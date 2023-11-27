@@ -10,11 +10,11 @@
   },
   "dependencies": {
     "@elfalem/leaflet-curve": "0.7.0",
-    "@tweenjs/tween.js": "17.2.0",
     "@mdi/font": "^7.3.67",
+    "@tweenjs/tween.js": "17.2.0",
     "axios": "^1.5.1",
-    "mitt": "^3.0.1",
     "leaflet": "1.7.1",
+    "mitt": "^3.0.1",
     "node-sass": "^9.0.0",
     "sass": "^1.69.3",
     "sass-loader": "^13.3.2",

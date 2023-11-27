@@ -14,11 +14,11 @@
       <!-- -------------------------- Bed ----------------------------- -->
       <v-menu>
         <template v-slot:activator="{ props }">
-          <v-btn v-bind="props">
+          <v-btn v-bind="props" flat>
             <v-icon icon="svg:bed" size="x-large" class="mr-1.5"></v-icon>
             <span :class="search.bedsNum > 0 ? 'text-xs' : 'text-grey'">
               <span>{{ search.bedsNum }}</span>
-              <span>{{ search.bedsNum > 1 ? ' Beds' : ' Bed' }}</span>
+              <span>{{ search.bedsNum > 1 ? " Beds" : " Bed" }}</span>
             </span>
           </v-btn>
         </template>
@@ -31,7 +31,7 @@
             class="cursor-pointer"
           >
             <v-list-item-title>
-              {{ num + (num > 1 ? ' Beds' : ' Bed') }}
+              {{ num + (num > 1 ? " Beds" : " Bed") }}
             </v-list-item-title>
           </v-list-item>
         </v-list>
@@ -39,7 +39,7 @@
       <!-- -------------------------- Bath ----------------------------- -->
       <v-menu>
         <template v-slot:activator="{ props }">
-          <v-btn v-bind="props">
+          <v-btn v-bind="props" flat>
             <v-icon icon="svg:bath" size="x-large" class="mr-1.5"></v-icon>
             <span :class="search.bathNum > 0 ? 'text-xs' : 'text-grey'">
               <span>{{ search.bathNum }}</span>
@@ -56,7 +56,7 @@
             class="cursor-pointer"
           >
             <v-list-item-title>
-              {{ num + ' Bath' }}
+              {{ num + " Bath" }}
             </v-list-item-title>
           </v-list-item>
         </v-list>
@@ -64,12 +64,12 @@
       <!-- ---------------------------- Parking --------------------------- -->
       <v-menu>
         <template v-slot:activator="{ props }">
-          <v-btn v-bind="props">
+          <v-btn v-bind="props" flat>
             <v-icon icon="svg:parking" size="x-large" class="mr-1.5"></v-icon>
             <span :class="search.parkingsNum > 0 ? 'text-xs' : 'text-grey'">
               <span>{{ search.parkingsNum }}</span>
               <span>
-                {{ search.parkingsNum > 1 ? ' Parkings' : ' Parking' }}
+                {{ search.parkingsNum > 1 ? " Parkings" : " Parking" }}
               </span>
             </span>
           </v-btn>
@@ -83,7 +83,7 @@
             class="cursor-pointer"
           >
             <v-list-item-title>
-              {{ num + (num > 1 ? ' Parkings' : ' Parking') }}
+              {{ num + (num > 1 ? " Parkings" : " Parking") }}
             </v-list-item-title>
           </v-list-item>
         </v-list>
@@ -100,9 +100,17 @@
         <v-icon icon="svg:label" class="scale-[1.9] rotate-[10deg]"></v-icon>
       </div>
 
-      <div class="text-sm text-grey-darken-1">only show listings with deals or promotions</div>
+      <div class="text-sm text-grey-darken-1">
+        only show listings with deals or promotions
+      </div>
 
-      <div><v-checkbox v-model="search.hasDeal" hide-details color="primary"></v-checkbox></div>
+      <div>
+        <v-checkbox
+          v-model="search.hasDeal"
+          hide-details
+          color="primary"
+        ></v-checkbox>
+      </div>
     </div>
 
     <!-- Extra option for Sold -->
@@ -117,18 +125,20 @@
     </div>
 
     <div>
-      <v-btn color="primary" block rounded height="46" class="mt-1">Find House</v-btn>
+      <v-btn color="primary" block rounded height="46" class="mt-1" flat
+        >Find House</v-btn
+      >
     </div>
   </div>
 </template>
 
 <script>
-import Select from '@/components/microComponents/Select.vue';
-import TextField from '@/components/microComponents/TextField.vue';
+import Select from "@/components/microComponents/Select.vue";
+import TextField from "@/components/microComponents/TextField.vue";
 export default {
-  name: 'QuickSearch',
+  name: "QuickSearch",
 
-  props: ['type'],
+  props: ["type"],
 
   components: {
     Select,
@@ -137,23 +147,23 @@ export default {
 
   setup() {
     const search = reactive({
-      field: '',
+      field: "",
       bedsNum: null,
       bathNum: null,
       parkingsNum: null,
       hasDeal: false,
-      soldWithin: 'Last 6 months',
+      soldWithin: "Last 6 months",
     });
 
     const soldWithinOptions = reactive([
-      'Last 7 days',
-      'Last 1 month',
-      'Last 3 months',
-      'Last 6 months',
-      'Last 1 year',
-      'Last 2 years',
-      'Last 3 years',
-      'last 5 years',
+      "Last 7 days",
+      "Last 1 month",
+      "Last 3 months",
+      "Last 6 months",
+      "Last 1 year",
+      "Last 2 years",
+      "Last 3 years",
+      "last 5 years",
     ]);
 
     return {
