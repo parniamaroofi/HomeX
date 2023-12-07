@@ -26,6 +26,18 @@
       font-size: 0.9rem;
     }
   }
+
+  textarea {
+    &::-webkit-scrollbar {
+      width: 3px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #c0ccce;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: #eee;
+    }
+  }
 }
 
 // Chat content
